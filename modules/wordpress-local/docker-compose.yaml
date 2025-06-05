@@ -1,0 +1,32 @@
+# modules/wordpress-local/docker-compose.yml.tpl
+services:
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: your_strong_root_password_here
+      MYSQL_DATABASE: my_wordpress_db
+      MYSQL_USER: my_wordpress_user
+      MYSQL_PASSWORD: my_strong_db_password_here
+    volumes:
+      - db_data:/var/lib/mysql
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    restart: always
+    ports:
+      - "8080:80" # Access WordPress on http://localhost:8080
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: my_wordpress_user
+      WORDPRESS_DB_PASSWORD: my_strong_db_password_here
+      WORDPRESS_DB_NAME: my_wordpress_db
+    volumes:
+      - wp_data:/var/www/html
+
+volumes:
+  db_data: {}
+  wp_data: {}
