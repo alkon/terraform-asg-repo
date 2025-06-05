@@ -1,0 +1,19 @@
+# Terraform generated files
+.terraform/           # Terraform's working directory for plugins, modules cache, etc.
+*.tfstate             # The primary state file (e.g., terraform.tfstate)
+*.tfstate.backup      # Backup state files created by Terraform
+.terraform.lock.hcl   # Dependency lock file (often committed, but can be ignored for simple local projects if desired)
+.terraformrc          # Terraform CLI configuration file (personal settings)
+*.tfvars.json         # JSON variable definition files (sensitive values should not be committed)
+*.tfvars              # Variable definition files (sensitive values should not be committed)
+crash.log             # Crash logs
+*.tfrun               # Files created by `terraform test`
+
+# Python / Virtual Environment files (from .venv)
+.venv/                # Python virtual environment directory
+
+# PyCharm specific files
+.idea/                # PyCharm project settings directory
+*.iml                 # PyCharm module files
+*.ipr                 # PyCharm project files
+*.iws                 # PyCharm workspace files
