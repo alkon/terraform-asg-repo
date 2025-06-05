@@ -1,0 +1,12 @@
+services:
+  localstack:
+    image: localstack/localstack:4.4.0 # Using a specific stable version
+    ports:
+      - "127.0.0.1:4566:4566"
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - PERSISTENCE=1 # Explicitly enable persistence (good practice)
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      # Using the official /var/lib/localstack for persistence, with absolute host path
+      - "/Users/alex/PycharmProjects/localstack-prj/.localstack:/var/lib/localstack"
